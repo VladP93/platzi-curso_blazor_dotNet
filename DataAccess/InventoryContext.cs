@@ -18,8 +18,33 @@ namespace DataAccess
         {
             if (!options.IsConfigured)
             {
-                options.UseSqlServer("Server=DESKTOP-769GIM4\\SQLEXPRESS; Databse=InventoryBlazorDB; User Id=sa; Password=1234");
+                options.UseSqlServer("Server=DESKTOP-769GIM4\\SQLEXPRESS; Database=InventoryBlazorDB; User Id=sa; Password=1234");
             }
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<CategoryEntity>().HasData(
+                new CategoryEntity { CategoryId = "ASH", CategoryName = "Aseo Hogar" },
+                new CategoryEntity { CategoryId = "ASP", CategoryName = "Aseo Personal" },
+                new CategoryEntity { CategoryId = "HGR", CategoryName = "Hogar" },
+                new CategoryEntity { CategoryId = "PRF", CategoryName = "Perfumería" },
+                new CategoryEntity { CategoryId = "SLD", CategoryName = "Salud" },
+                new CategoryEntity { CategoryId = "VDJ", CategoryName = "Video Juegos" }
+                );
+
+            modelBuilder.Entity<WarehouseEntity>().HasData(
+                new WarehouseEntity { WarehouseId = Guid.NewGuid().ToString(), WarehouseName = "Bodega Central", WarehouseAddress = "Calle 8 con 23" },
+                new WarehouseEntity { WarehouseId = Guid.NewGuid().ToString(), WarehouseName = "Bodega Norte", WarehouseAddress = "Calle norte con occidente" }
+                );
+
+            modelBuilder.Entity<ProductEntity>().HasData(
+                new ProductEntity { ProductId = "ASJ-98745", ProductName = "Crema para manos marca Tersa", ProductDescription = "", CategoryId = "PRF" },
+                new ProductEntity { ProductId = "RPT-54658", ProductName = "Pastillas para la garganta LESUS", ProductDescription = "", CategoryId = "SLD" }
+                );
+
         }
     }
 }
