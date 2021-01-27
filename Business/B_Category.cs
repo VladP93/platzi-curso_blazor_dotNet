@@ -17,7 +17,7 @@ namespace Business
             }
         }
 
-        public void CreateCategory(CategoryEntity oCategory)
+        public static void CreateCategory(CategoryEntity oCategory)
         {
             using (var db = new InventoryContext())
             {
