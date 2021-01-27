@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <Folder Include="Components\Categories\" />
+    <Folder Include="Components\InOuts\" />
   </ItemGroup>
 
 </Project>
